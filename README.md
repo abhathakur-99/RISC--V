@@ -472,10 +472,6 @@ To calculate expression: `(a + b) * (c - d) + e * f`
 ---
 
 ### 15.X14 → a4 (Argument Register 4)
-
-
-/*
-15) x14 -> a4 (Argument Register 4)
     -> a4 is the fifth argument register
     -> It holds the fifth input parameter of a function during a call.
 
@@ -494,7 +490,7 @@ Imp:
     x10 (a0) to x17 (a7)
     All of them belong to the argument registers group.
 
-    a5 -> 5th argument
+    a5 -> 6th argument
     a6 -> 7th argument
     a7 -> 8th argument
 
