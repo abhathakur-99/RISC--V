@@ -35,9 +35,61 @@ A **processor** (CPU – Central Processing Unit) is the **brain of a computer**
    * Electrical pathways that **transfer data, instructions, and addresses** between CPU, memory, and peripherals.
 
 A processor (CPU) is the brain of a computer. It executes instructions, performs arithmetic & logic operations, handles floating-point calculations via the FPU, and controls data flow. Key components include ALU, FPU, registers, control unit, instruction decoder, cache, and buses.
+ INSTRUCTION EXECUTION CYCLE
+ 1. What is it?
+
+The instruction execution cycle is the step-by-step process a CPU follows to run each instruction in a program.
+
+It’s like a loop that repeats for every single instruction.
+
+2. Main Steps in the Cycle
+(a) Fetch
+
+CPU gets (fetches) the instruction from memory (RAM).
+
+The Program Counter (PC) holds the address of the next instruction.
+
+Instruction is copied into the Instruction Register (IR).
+
+PC is updated to point to the next instruction.
+
+(b) Decode
+
+CPU decodes (interprets) the instruction in the IR.
+
+The Control Unit (CU) figures out:
+
+What operation to perform (add, move, jump, etc.).
+
+Which operands (data/addresses) are needed.
+
+(c) Execute
+
+CPU carries out the instruction:
+
+If it’s arithmetic → ALU performs operation.
+
+If it’s memory access → data is read/written.
+
+If it’s jump/branch → PC is updated to a new address.
+
+(d) Store (sometimes added)
+
+Result of the operation is stored back into memory or a register.
+
+3. Cycle Repeats
+
+After execution, CPU goes back to fetch the next instruction.
+
+This cycle continues until the program ends.
+
+[Fetch] → [Decode] → [Execute] → [Store] → (back to Fetch next instruction)
+
+![Uploading image.png…]()
 
 
 5 MEMORY SYSTEM ARCHITECTURE
+
 The term “Memory System Architecture” refers to the design and organization of a computer’s memory system, including how memory is structured, accessed, and managed to store and retrieve data efficiently. It’s a key part of computer architecture because memory speed and organization directly affect a processor’s performance
 
 1. Components of a Memory System Architecture
