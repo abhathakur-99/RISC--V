@@ -632,3 +632,6 @@ A memory system is usually hierarchical, with different levels of memory differi
 - **Volatility**: Whether memory retains data without power.
   - **RAM** is volatile; **SSD**, **HDD** is non-volatile.
   - Retains data even when there is no pow
+ 
+    <img width="613" height="481" alt="image" src="https://github.com/user-attachments/assets/7f0d63fd-5a2e-4e9c-ac0a-7b196aea5b90" />
+
