@@ -195,7 +195,7 @@ beq x3, x0, label  # Compare x3 with 0
 ### In short
 `x2 (sp)` = CPU’s **bookmark for stack** → it always points to the current top of the stack so that function calls, local variables & saved registers are managed safely.  
 # RISC-V Registers Notes
-
+here
 ## 4. x4 = tp (Thread pointer)
 - It is a special register used in multi-threaded programs.  
 - Each thread (like a mini-program running inside your program) needs its own private data area.  
