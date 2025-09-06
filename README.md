@@ -313,8 +313,8 @@ To calculate expression: `(a + b) * (c - d) + e * f`
 
 ###  Usage:
 - `t2` is the **last of the**
-
-- 
+-  just like t0,t1 t is caller saved
+-  Best used when you need multiplee intermediate  results in one calculations (but not preservedacross function calls)
 
 # 5MEMORY SYSTEM ARCHITECTURE
 
