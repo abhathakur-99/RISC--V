@@ -294,6 +294,9 @@ To calculate expression: `(a + b) * (c - d) + e * f`
 
 > `t1` = a temp. scratch register used for intermediate results in calculations, very fast but **not preserved across function calls**.
 
+
+- 
+
 # 5MEMORY SYSTEM ARCHITECTURE
 
 The term “Memory System Architecture” refers to the design and organization of a computer’s memory system, including how memory is structured, accessed, and managed to store and retrieve data efficiently. It’s a key part of computer architecture because memory speed and organization directly affect a processor’s performance
