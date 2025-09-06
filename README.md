@@ -554,17 +554,17 @@ X18 (S2) -> X27 (S11) = all identical roles (just more slots).
 - All have the same role + safe storage for variables across function calls. No functional difference between them -> they're just extra slots for stability.
 
 
-###29) x28 -> t3C Temporary Register 3
+###  29) x28 -> t3C Temporary Register 3
     -> t3 is a temporary register
     -> It belongs to t4 - t6 (temporaries)
     -> Used for short-term scratch calculations inside the function.
 
-Why it exists:
+# Why it exists:
     -> During calculations, CPU often needs extra space to hold intermediate results.
     -> Argument registers (a0 - a7) are reserved for inputs, saved registers (s0 - s11) are supposed to stay stable.
     -> That's why t3 (and other temporaries) are free-use registers.
 
-How it works:
+# How it works:
     -> If a function uses t3, it doesn't save/restore it.
     -> After a function call, the old value in t3 can be overwritten or lost — caller should never expect it to survive.
     -> In other words: use it and forget it.
