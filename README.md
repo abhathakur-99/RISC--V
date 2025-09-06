@@ -639,3 +639,17 @@ A memory system is usually hierarchical, with different levels of memory differi
 **What Is Virtual Memory?**
 Virtual memory creates an illusion that each program has access to a large, private
 memory space, even though physical memory is limited and shared.
+
+
+## Problem
+- Your RAM is limited
+- But programs need more memory than RAM
+- And multiple programs are running at the same time
+
+## Virtual Memory Solution
+- Virtual memory: Virtual memory for each program interacting with a "big" (physical) memory even if Physical RAM is small
+- RAM is shared by all programs
+- Virtual memory: Think of your RAM as a cabinet
+  - Virtual memory = programs + process + system
+  - When RAM is full, swap data (temporarily moved to hard drive)
+  - When the program needs it, the OS brings it back by helping you pull paper from the cabinet
