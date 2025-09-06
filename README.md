@@ -473,12 +473,33 @@ To calculate expression: `(a + b) * (c - d) + e * f`
 
 ### 15.X14 → a4 (Argument Register 4)
 
-- a4 is the fifth argument register  
-- Used to hold the fifth input parameter during function call
 
-#### Why it exists:
-- Many functions require more than four parameters  
-- a4 provi
+/*
+15) x14 -> a4 (Argument Register 4)
+    -> a4 is the fifth argument register
+    -> It holds the fifth input parameter of a function during a call.
+
+Why it exists:
+    -> To avoid slow memory access, RISC-V allows the first 8 inputs to be stored directly in registers (a0-a7).
+    -> a4 is dedicated for the fifth argument.
+    -> a4 isn't used for return values.
+
+Imp:
+    -> a4 = strictly for the fifth input.
+    -> not involved in return value.
+    -> If the function has fewer than 5 arguments, a4 remains unchanged.
+    -> x14 -> register that holds the fifth argument (input) of a function.
+
+*Important*
+    x10 (a0) to x17 (a7)
+    All of them belong to the argument registers group.
+
+    a5 -> 5th argument
+    a6 -> 7th argument
+    a7 -> 8th argument
+
+Max 8 arguments via registers. If a function has more than 8 inputs, extra ones are passed using memory (stack).
+*/
 
 
 # 5MEMORY SYSTEM ARCHITECTURE
