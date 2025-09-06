@@ -635,3 +635,7 @@ A memory system is usually hierarchical, with different levels of memory differi
  
     <img width="613" height="481" alt="image" src="https://github.com/user-attachments/assets/7f0d63fd-5a2e-4e9c-ac0a-7b196aea5b90" />
 
+# Virtual Memory System
+**What Is Virtual Memory?**
+Virtual memory creates an illusion that each program has access to a large, private
+memory space, even though physical memory is limited and shared.
