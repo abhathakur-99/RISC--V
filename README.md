@@ -107,27 +107,60 @@ It is a **repeating loop** that continues until the program ends.
 **Each flipflop stores 1 bit(0 or 1)
 Together,32 flipflops=32 bit = 1 full register**
 <img width="664" height="493" alt="image" src="https://github.com/user-attachments/assets/d16e3113-32bb-4bb3-b365-debdff283c73" />
-
 # RISC-V Registers Notes
 
-## 1. x0 – Zero Register
-- In RISC-V, **x0 is hardwired to 0**  
-  - It always contains `0` (cannot be changed).  
-  - Any instruction that tries to write to `x0` will be ignored.  
+## 1. x0
+- In RISC-V, x0 is hardwired to 0  
+  → Means it always contains 0 – you cannot overwrite it.  
+  → Any instruction that tries to write to x0 will be ignored.  
 
-### Benefits
-- Makes programming simpler & faster (CPU always has a zero constant available).  
-- Saves hardware complexity (no need to load 0 from memory).  
-- Saves register space (instead of wasting a register for storing 0, one dedicated register is available).  
-- Makes assembly code cleaner & more efficient.  
+- It makes programming simpler & faster because CPU has a free zero constant available.  
+
+### Common Use
+- Clearing a register  
+- Copying values  
+- Comparisons  
+- Creating NOP  
+
+- Saves hardware complexity → no need to load 0 from memory  
+- Saves register space → instead of unrolling/occupying a general register by storing 0 in it, dedicate the register that is always 0  
+- Makes assembly code shorter & more efficient  
+
+---
+
+## 2. x1 = ra (Return address register)
+- When you call a function, CPU must remember where to come back once that function finishes.  
+- It is a special address register that holds that return address.  
+
+### Instruction: `jal` (Jump and Link)
+- Used for function calls.  
+- It does two things:  
+  (a) Jumps to the function  
+  (b) Stores the address of the next instruction (i.e. return address) into `ra (x1)`  
+
+- So without the `ra` register, CPU wouldn’t know where to go back.  
+- Every time a function is called, the return point is saved into `ra`.  
+
+### Common Use
+- Function calls  
+- Nested calls  
+  - `ra` stores return address, but if another function is called inside, the old one must be saved on stack, otherwise return path might be lost  
+
+---
+
+### Important
+- If you overwrite `ra` accidentally → program will jump to the wrong place = crash.  
+- That is why compiler saves `ra` on stack if multiple nested calls are happening.  
+  
 
 ### Common Uses
 ```asm
 add x5, x6, x0     # Copy value of x6 into x5
 add x7, x0, x0     # Clear register (x7 = 0)
 beq x3, x0, label  # Compare x3 with 0
-
-# 5 MEMORY SYSTEM ARCHITECTURE
+.
+###
+# 5MEMORY SYSTEM ARCHITECTURE
 
 The term “Memory System Architecture” refers to the design and organization of a computer’s memory system, including how memory is structured, accessed, and managed to store and retrieve data efficiently. It’s a key part of computer architecture because memory speed and organization directly affect a processor’s performance
 
