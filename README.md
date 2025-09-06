@@ -585,3 +585,39 @@ x31 -> often used for larger last temp values in some cases too offset calculati
 
 # it explains how function calling work in the risc v architecture,particularly regarding how arguments are passes and how registers are used in function
 
+# Memory System Architecture
+
+- It refers to the design & organization of a computer memory system, including how memory is structured, accessed, and managed to store & retrieve data efficiently.
+- It's a key part of computer architecture because memory speed & organization directly affect a processor's performance.
+
+## Components of Memory System Architecture
+
+A memory system is usually hierarchical, with different levels of memory differing in speed, size, and cost.
+
+1. **Registers:**
+   - Fastest memory inside the CPU.
+   - Very small in size.
+   - Used for immediate operations.
+
+2. **Cache Memory:**
+   - Small but fast memory located close to the CPU.
+   - Stores frequently used data.
+   - Levels: L1 (fastest, smallest), L2 (slightly bigger), L3 (largest, slowest).
+
+3. **Main Memory (RAM):**
+   - Larger than cache but slower.
+   - Stores programs & data currently in use.
+
+4. **Secondary Storage:**
+   - Hard disk drives (HDD), SSDs.
+   - Very large but slow.
+   - Used for long-term storage.
+
+5. **Tertiary (Off-line) Storage:**
+   - Optical discs, tapes, cloud storage.
+   - Extremely large & slow.
+   - Used for backup/archive.
+
+## Key Concepts in Memory System Architecture
+
+- **Memor**
