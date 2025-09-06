@@ -1,5 +1,5 @@
 # RISC--V
-PROCESSORS
+#PROCESSORS
 
 A **processor** (CPU – Central Processing Unit) is the **brain of a computer**, responsible for executing instructions, performing arithmetic and logical operations, and controlling the flow of data between memory and peripherals.
 <img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/5793a300-e132-4c01-91b0-6b822f524d85" />
@@ -67,8 +67,6 @@ It is a **repeating loop** that continues until the program ends.
 ### (d) **Store (sometimes added)**
 - Result of the operation is **stored back into memory or a register**.
 
----
-
 ## 3. Cycle Repeats
 - After execution, the CPU goes back to **fetch the next instruction**.
 - This cycle continues until the program ends.
@@ -76,6 +74,10 @@ It is a **repeating loop** that continues until the program ends.
 [Fetch] → [Decode] → [Execute] → [Store] → (back to Fetch next instruction)
 
 <img width="648" height="419" alt="image" src="https://github.com/user-attachments/assets/5c0e2301-bc7f-46a2-98c0-1a7f39ebb44f" />
+
+#UNDERSTANDING BINARY AND DATA REPRESENTATION
+<img width="632" height="400" alt="image" src="https://github.com/user-attachments/assets/f1383251-f67c-4aff-bfdf-29e4c85e6a4c" />
+<img width="656" height="237" alt="image" src="https://github.com/user-attachments/assets/52b75c03-4ca9-4294-9a44-827341b21643" />
 
 
 
