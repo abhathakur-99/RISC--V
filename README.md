@@ -399,6 +399,86 @@ To calculate expression: `(a + b) * (c - d) + e * f`
 - If function returns 1 value → always in a0  
 - If function returns 2 values → a0 = first result, a1 = second result  
 - Every function
+### 12.X11 → a1 (Argument / Return Register 1)
+
+- a1 is the second argument register  
+- Also works as the second return value register (if a function returns two values)
+
+#### Why it exists:
+- Most functions need more than one input  
+- Instead of getting inputs from memory, RISC-V uses fast registers  
+- That’s why a1 is fixed for the second input parameter  
+- If the function has multiple outputs, a1 can also carry the second output
+
+#### How it works:
+- When function is called  
+  → a0 gets first argument  
+  → a1 gets the second argument  
+- When returning multiple values  
+  → a0 → first result  
+  → a1 → second result
+
+#### Imp:
+- It always holds the second function argument  
+- Can also hold the second return value (if needed)  
+- Together with a0, a1 is one of the most important registers in function calls
+
+---
+
+### 13.X12 → a2 (Argument Register 2)
+
+- a2 is the third argument register  
+- Used to hold the third input parameter of a function
+
+#### Why it exists:
+- Most real world functions need more than two inputs  
+- Instead of sending inputs via memory, CPU uses fast registers  
+- That’s why a2 is fixed for the third input parameter
+
+#### How it works:
+- When function is called:  
+  → a0 = first argument  
+  → a1 = second argument  
+  → a2 = third argument  
+- Inside the function, a2 can be used directly for calculations  
+- On return: a0 (and a1 if needed) carry the outputs → a2 isn’t used for return
+
+#### Imp:
+- a2 is only for input arguments, never used as return  
+- Together with a0–a7, it allows up to 8 arguments to be passed via registers  
+- If function has more than 8 inputs → extra ones are passed via memory/stack
+
+---
+
+### 14.X13 → a3 (Argument Register 3)
+
+- a3 is the fourth argument register  
+- It holds the fourth input parameter of a function during a call
+
+#### Why it exists:
+- Many functions need 4 or more inputs (like math operations, physics formulas, graphics)  
+- To keep things fast, RISC-V assigns fixed registers (a0–a7) for the first 8 inputs  
+- a3 is specifically reserved for the fourth input
+
+#### How it works:
+- On a function call  
+  → a0 = 1st  
+  → a1 = 2nd  
+  → a2 = 3rd  
+  → a3 = 4th  
+- Inside the function, a3 is used directly for calculations  
+- On return: a3 isn’t used for results
+
+---
+
+### 15.X14 → a4 (Argument Register 4)
+
+- a4 is the fifth argument register  
+- Used to hold the fifth input parameter during function call
+
+#### Why it exists:
+- Many functions require more than four parameters  
+- a4 provi
 
 
 # 5MEMORY SYSTEM ARCHITECTURE
