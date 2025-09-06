@@ -316,6 +316,44 @@ To calculate expression: `(a + b) * (c - d) + e * f`
 -  just like t0,t1 t is caller saved
 -  Best used when you need multiplee intermediate  results in one calculations (but not preservedacross function calls)
 
+
+## X8 → s0 / fp (Saved Register 0 / Frame Pointer)
+
+### Dual Role
+
+1. **s0 (Saved Register 0)**  
+   - Used as a long-term variable storage across functions.
+
+2. **fp (Frame Pointer)**  
+   - Used to mark the base of the current function's stack frame.
+
+### Why it exists
+
+#### As `s0` (Saved Register)
+- Some variables must stay alive across function calls.
+- If you keep them in temporary registers, they will be lost.
+- Saved registers like `s0` are callee-saved — the function you call must restore them before returning.
+
+#### As `fp` (Frame Pointer)
+- In functions, local variables are placed in the stack.
+- As the stack grows up and down, addresses change.
+- `fp` stays fixed at one base of the function's stack frame, especially useful to access variables reliably.
+- Important for nested functions and debugging, where stack pointer (`sp`) keeps changing.
+
+### How it works
+- When a function starts:
+  - The old `fp` is saved onto the stack.
+  - The new `fp` is set to the current stack pointer (`sp`).
+  - Local variables are accessed using fixed offsets from `fp`.
+- When the function ends:
+  - Restore the old `fp`.
+  - Free the stack.
+
+### Usage
+- `s0` acts like any saved register (safe across calls).
+- `fp` gives a stable reference point inside the stack frame.
+- Not all programs use `fp`, b
+
 # 5MEMORY SYSTEM ARCHITECTURE
 
 The term “Memory System Architecture” refers to the design and organization of a computer’s memory system, including how memory is structured, accessed, and managed to store and retrieve data efficiently. It’s a key part of computer architecture because memory speed and organization directly affect a processor’s performance
