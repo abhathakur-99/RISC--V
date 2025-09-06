@@ -317,7 +317,7 @@ To calculate expression: `(a + b) * (c - d) + e * f`
 -  Best used when you need multiplee intermediate  results in one calculations (but not preservedacross function calls)
 
 
-## X8 → s0 / fp (Saved Register 0 / Frame Pointer)
+## 9.X8 → s0 / fp (Saved Register 0 / Frame Pointer)
 
 ### Dual Role
 
@@ -353,6 +353,53 @@ To calculate expression: `(a + b) * (c - d) + e * f`
 - `s0` acts like any saved register (safe across calls).
 - `fp` gives a stable reference point inside the stack frame.
 - Not all programs use `fp`, b
+### 10.X9 → s1 (Saved Register 1)
+
+- s1 is a saved register  
+- Used to store variables that must be preserved across function calls  
+- Values in s1 remain unchanged even if function calls happen  
+- Useful for keeping data safe when calling other functions  
+
+#### Why it exists:
+- When a function calls another function, some registers can get overwritten  
+- To avoid losing important values, s1 saves these values  
+- This helps in maintaining consistent program state  
+
+#### How it works:
+- Before calling a function, current function saves important values in s1  
+- Called function can freely use temporary registers without affecting s1  
+- After the call, the original function restores values from s1  
+
+#### Imp:
+- s1 must be preserved across function calls  
+- If a function uses s1, it must save and restore its value properly  
+- s1 helps in keeping local variables intact between calls
+
+
+### 11.X10 → a0 (Argument Register / Return value 0)
+
+- a0 is first argument register  
+- It is also the return value register  
+- Dual purpose: input (function's first parameter) and output (function's result)
+
+#### Why it exists:
+- To avoid slow memory access when passing function inputs/outputs  
+- CPU/compiler knows exactly where to look for the first input & where to find the return value  
+- This makes function call very fast and consistent
+
+#### How it works:
+- When a function is called  
+  → The first input goes into a0  
+- Inside the function  
+  → Calculations may overwrite a0  
+- When returning  
+  → The final result is placed in a0
+
+#### Imp:
+- If function returns 1 value → always in a0  
+- If function returns 2 values → a0 = first result, a1 = second result  
+- Every function
+
 
 # 5MEMORY SYSTEM ARCHITECTURE
 
