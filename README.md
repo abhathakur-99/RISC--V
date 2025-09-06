@@ -654,6 +654,7 @@ memory space, even though physical memory is limited and shared.
   - Virtual memory = programs + process + system
   - When RAM is full, swap data (temporarily moved to hard drive)
   - When the program needs it, the OS brings it back by helping you pull paper from the cabinet
+<img width="495" height="532" alt="image" src="https://github.com/user-attachments/assets/6c3fce84-9bdf-4c1a-9efc-dbf9d028720e" />
 
 # Address Translation
 
