@@ -580,3 +580,8 @@ x29 -> ""
 x30 -> can be used for temp storage that may persist across short sequence
 x31 -> often used for larger last temp values in some cases too offset calculations.
 */
+<img width="659" height="386" alt="image" src="https://github.com/user-attachments/assets/7a3ad3d5-782e-4245-9121-decc239074e2" />
+<img width="581" height="482" alt="image" src="https://github.com/user-attachments/assets/58afda4b-b0fc-458f-96ff-aaed4de46836" />
+
+# it explains how function calling work in the risc v architecture,particularly regarding how arguments are passes and how registers are used in function
+
