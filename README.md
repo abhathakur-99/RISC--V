@@ -156,7 +156,6 @@ beq x3, x0, label  # Compare x3 with 0
 - That is why compiler saves `ra` on stack if multiple nested calls are happening.  
   
 
-# RISC-V Registers Notes
 
 ## 3. x2 = sp (Stack pointer)
 - It always points to the top of the stack in memory.  
@@ -195,7 +194,7 @@ beq x3, x0, label  # Compare x3 with 0
 ### In short
 `x2 (sp)` = CPU’s **bookmark for stack** → it always points to the current top of the stack so that function calls, local variables & saved registers are managed safely.  
 # RISC-V Registers Notes
-# GP (Global Pointer)
+# x3 GP (Global Pointer)
 
 - `gp` is a **special register** that points to the global data area in memory.
 - Significantly, it points to the **middle of the static/global region**, so both directions (up/down) can be used for different kinds of data.
