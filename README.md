@@ -653,3 +653,45 @@ memory space, even though physical memory is limited and shared.
   - Virtual memory = programs + process + system
   - When RAM is full, swap data (temporarily moved to hard drive)
   - When the program needs it, the OS brings it back by helping you pull paper from the cabinet
+
+# Address Translation
+
+This process explains how virtual addresses used by programs are translated to physical addresses (actual locations in memory) by the Memory Management Unit (MMU).
+
+
+# Address Translation
+
+## This process explains how virtual addresses used by programs are translated to physical addresses (actual locations in memory) by the Memory Management Unit (MMU).
+
+### Steps of Address Translation:
+
+1. **Check the Translation Lookaside Buffer (TLB):**
+   - The first step is to check the TLB. The TLB is a small, fast cache that stores recently used virtual to physical address translations.
+   - If the virtual address is already stored in the TLB, then the translation is done quickly, and the corresponding physical address is fetched directly from the TLB.
+
+2. **If Not Found in TLB, Consult the Page Table:**
+   - If the virtual address is not found in the TLB, the Memory Management Unit (MMU) will then look up the address in the page table.
+   - The page table is a data structure that maps virtual page numbers to physical page numbers.
+   - The MMU retrieves the physical page number from the page table that corresponds to the virtual page number.
+
+3. **Calculate the Final Physical Address (Virtual Address + Offset):**
+   - Once the physical page number is found, the offset (which is part of the virtual address) is added to the physical page number to compute the final physical address.
+
+### Example:
+1. **Virtual Address:** 0x10000000
+2. **MMU Checks the TLB:**
+   - If it's not found in the TLB, the MMU will check the page table:
+     - Virtual page: 0x100000
+     - Physical page: 0x012000
+3. **The Final Physical Address** is calculated by combining the physical page and offset:
+   - Example:
+     - If the offset is 0x0000, the final physical address would be:
+       - Physical Address = Physical page Address + Offset
+       - Physical Address = 0x012000 + 0x0000 = 0x012000
+
+## Summary:
+1. **Check the TLB**
+2. **Look up the page table** if it's not in the TLB
+3. **Calculate the physical address** using the physical page & offset
+
+This entire process ensures that the system can efficiently map a program's virtual address to the actual physical address in memory.
