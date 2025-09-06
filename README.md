@@ -35,57 +35,48 @@ A **processor** (CPU – Central Processing Unit) is the **brain of a computer**
    * Electrical pathways that **transfer data, instructions, and addresses** between CPU, memory, and peripherals.
 
 A processor (CPU) is the brain of a computer. It executes instructions, performs arithmetic & logic operations, handles floating-point calculations via the FPU, and controls data flow. Key components include ALU, FPU, registers, control unit, instruction decoder, cache, and buses.
- INSTRUCTION EXECUTION CYCLE
- 1. What is it?
+ **INSTRUCTION EXECUTION CYCLE**
+ # Instruction Execution Cycle
 
-The instruction execution cycle is the step-by-step process a CPU follows to run each instruction in a program.
+## 1. What is it?
+The **Instruction Execution Cycle** (also called **Fetch–Decode–Execute Cycle**) is the **step-by-step process followed by the CPU to execute each instruction** in a program.  
+It is a **repeating loop** that continues until the program ends.
 
-It’s like a loop that repeats for every single instruction.
+---
 
-2. Main Steps in the Cycle
-(a) Fetch
+## 2. Main Steps
 
-CPU gets (fetches) the instruction from memory (RAM).
+### (a) **Fetch**
+- CPU gets (fetches) the instruction from **memory (RAM)**.
+- The **Program Counter (PC)** holds the address of the next instruction.
+- Instruction is copied into the **Instruction Register (IR)**.
+- **PC** is updated to point to the next instruction.
 
-The Program Counter (PC) holds the address of the next instruction.
+### (b) **Decode**
+- CPU **decodes (interprets)** the instruction in the **IR**.
+- The **Control Unit (CU)** figures out:
+  - What operation to perform (**add, move, jump, etc.**).
+  - Which **operands (data/addresses)** are needed.
 
-Instruction is copied into the Instruction Register (IR).
+### (c) **Execute**
+- CPU carries out the instruction:
+  - If it’s **arithmetic** → **ALU** performs the operation.
+  - If it’s **memory access** → data is read/written.
+  - If it’s a **jump/branch** → **PC** is updated to a new address.
 
-PC is updated to point to the next instruction.
+### (d) **Store (sometimes added)**
+- Result of the operation is **stored back into memory or a register**.
 
-(b) Decode
+---
 
-CPU decodes (interprets) the instruction in the IR.
-
-The Control Unit (CU) figures out:
-
-What operation to perform (add, move, jump, etc.).
-
-Which operands (data/addresses) are needed.
-
-(c) Execute
-
-CPU carries out the instruction:
-
-If it’s arithmetic → ALU performs operation.
-
-If it’s memory access → data is read/written.
-
-If it’s jump/branch → PC is updated to a new address.
-
-(d) Store (sometimes added)
-
-Result of the operation is stored back into memory or a register.
-
-3. Cycle Repeats
-
-After execution, CPU goes back to fetch the next instruction.
-
-This cycle continues until the program ends.
+## 3. Cycle Repeats
+- After execution, the CPU goes back to **fetch the next instruction**.
+- This cycle continues until the program ends.
 
 [Fetch] → [Decode] → [Execute] → [Store] → (back to Fetch next instruction)
 
-![Uploading image.png…]()
+<img width="648" height="419" alt="image" src="https://github.com/user-attachments/assets/5c0e2301-bc7f-46a2-98c0-1a7f39ebb44f" />
+
 
 
 5 MEMORY SYSTEM ARCHITECTURE
