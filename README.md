@@ -498,4 +498,59 @@ Max 8 arguments via registers. If a function has more than 8 inputs, extra ones 
 */
 
 
+## (18) X17 -> a7 (Argument Register 7)
+- a7 is the eighth argument register.
+- Also has a special role: Used to hold the system call number when making OS calls.
+
+Extra Role = tells the OS which system call to perform (example: read, write, exit)
+
+X17 (a7) = the register that carries the eighth argument in a function, and in system calls, it specifies the system call number.
+
+---
+
+## (19) X18 -> S2 (Saved register 2)
+- S2 is the first saved register.
+- Saved registers (S0 - S11) are meant to hold important values across function calls.
+- They are also called callee-saved registers -> the function you call must save and restore them if it uses them.
+
+### How it works:
+- Suppose function A calls function B:
+  - Function B can freely use temporary registers.
+  - But if B touches S2, it must save the old value on the stack & restore it before returning.
+- This ensures that S2 still holds the same value when control goes back to function A.
+
+### Imp
+- S2 = one of the long-term safe storage registers.
+- Used when a function needs to keep a variable intact across calls.
+- Compiler automatically manages saving/restoring S2 on stack if needed.
+
+X18 -> A saved register that holds important values safely across function calls (callee must restore if blocked).
+
+---
+
+## Saved Registers
+X18 - X27 (S2 - S11)
+
+- These are all saved (callee-saved) registers.
+- Their main job = hold variables that need to stay safe across function calls.
+- Convention: if a callee (called function) uses them, it must save/restore them.
+
+---
+
+### Functionally,
+S2 - S11 are all the same functionally, just a slot where you can keep an important value.
+
+X18 (S2) -> X27 (S11) = all identical roles (just more slots).
+
+---
+
+### Why so many:
+- Complex functions sometimes need to keep lots of variables safe.
+- Having 10 saved registers (S2 - S11) means compiler/programmer doesn't always have to spill everything into memory.
+- Example: recursive functions, loops, big formulas.
+
+---
+
+- All have the same role + safe storage for variables across function calls. No functional difference between them -> they're just extra slots for stability.
+
 
