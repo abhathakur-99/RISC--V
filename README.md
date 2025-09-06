@@ -35,7 +35,7 @@ A **processor** (CPU – Central Processing Unit) is the **brain of a computer**
    * Electrical pathways that **transfer data, instructions, and addresses** between CPU, memory, and peripherals.
 
 A processor (CPU) is the brain of a computer. It executes instructions, performs arithmetic & logic operations, handles floating-point calculations via the FPU, and controls data flow. Key components include ALU, FPU, registers, control unit, instruction decoder, cache, and buses.
- **INSTRUCTION EXECUTION CYCLE**
+
  # Instruction Execution Cycle
 
 ## 1. What is it?
@@ -75,12 +75,11 @@ It is a **repeating loop** that continues until the program ends.
 
 <img width="648" height="419" alt="image" src="https://github.com/user-attachments/assets/5c0e2301-bc7f-46a2-98c0-1a7f39ebb44f" />
 
-#UNDERSTANDING BINARY AND DATA REPRESENTATION
+# UNDERSTANDING BINARY AND DATA REPRESENTATION
 <img width="632" height="400" alt="image" src="https://github.com/user-attachments/assets/f1383251-f67c-4aff-bfdf-29e4c85e6a4c" />
 <img width="656" height="237" alt="image" src="https://github.com/user-attachments/assets/52b75c03-4ca9-4294-9a44-827341b21643" />
 
-#REGISTERS:THE PROCESSOR'S WORKSPACE 
-# Registers  
+# Registers  :THE PROCESSOR'S WORKSPACE
 
 ## 1. **Definition**  
 - **Registers** are **very small, very fast storage locations inside the CPU**.  
@@ -104,8 +103,31 @@ It is a **repeating loop** that continues until the program ends.
 
 ➡️ Registers are small but **super fast** → that’s why the CPU loves to keep frequently used values there.  
 
+<img width="588" height="343" alt="image" src="https://github.com/user-attachments/assets/19e07fab-91d3-4a67-ae09-053ad5556465" />
+**Each flipflop stores 1 bit(0 or 1)
+Together,32 flipflops=32 bit = 1 full register**
+<img width="664" height="493" alt="image" src="https://github.com/user-attachments/assets/d16e3113-32bb-4bb3-b365-debdff283c73" />
 
-5 MEMORY SYSTEM ARCHITECTURE
+# RISC-V Registers Notes
+
+## 1. x0 – Zero Register
+- In RISC-V, **x0 is hardwired to 0**  
+  - It always contains `0` (cannot be changed).  
+  - Any instruction that tries to write to `x0` will be ignored.  
+
+### Benefits
+- Makes programming simpler & faster (CPU always has a zero constant available).  
+- Saves hardware complexity (no need to load 0 from memory).  
+- Saves register space (instead of wasting a register for storing 0, one dedicated register is available).  
+- Makes assembly code cleaner & more efficient.  
+
+### Common Uses
+```asm
+add x5, x6, x0     # Copy value of x6 into x5
+add x7, x0, x0     # Clear register (x7 = 0)
+beq x3, x0, label  # Compare x3 with 0
+
+# 5 MEMORY SYSTEM ARCHITECTURE
 
 The term “Memory System Architecture” refers to the design and organization of a computer’s memory system, including how memory is structured, accessed, and managed to store and retrieve data efficiently. It’s a key part of computer architecture because memory speed and organization directly affect a processor’s performance
 
