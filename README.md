@@ -194,7 +194,7 @@ beq x3, x0, label  # Compare x3 with 0
 ### In short
 `x2 (sp)` = CPU’s **bookmark for stack** → it always points to the current top of the stack so that function calls, local variables & saved registers are managed safely.  
 # RISC-V Registers Notes
-# x3 GP (Global Pointer)
+# 4.x3=GP (Global Pointer)
 
 - `gp` is a **special register** that points to the global data area in memory.
 - Significantly, it points to the **middle of the static/global region**, so both directions (up/down) can be used for different kinds of data.
@@ -294,6 +294,25 @@ To calculate expression: `(a + b) * (c - d) + e * f`
 
 > `t1` = a temp. scratch register used for intermediate results in calculations, very fast but **not preserved across function calls**.
 
+# RISC-V Register Notes
+
+##  X7 → `t2` (Temporary Register 2)
+
+- `t2` is the **third temporary register** in RISC-V.
+- Part of the **caller-saved temporaries** (`t0–t6`).
+- Works like `t0 (x5)` and `t1 (x6)` → used as a **scratch register** for quick calculations.
+
+###  Why It Exists:
+- Programs often need **more than 2 scratch values** at once.
+- Avoids **frequent memory access**, which is slow.
+
+###  How It Works:
+- You store an intermediate result in `t2`.
+- If you call another function in between, its value **might get overwritten** → caller must **save it if needed**.
+- It's **fast** but **not safe** across function calls.
+
+###  Usage:
+- `t2` is the **last of the**
 
 - 
 
