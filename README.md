@@ -125,9 +125,12 @@ Together,32 flipflops=32 bit = 1 full register**
 - Saves hardware complexity → no need to load 0 from memory  
 - Saves register space → instead of unrolling/occupying a general register by storing 0 in it, dedicate the register that is always 0  
 - Makes assembly code shorter & more efficient  
-
----
-
+### Common Uses
+```asm
+add x5, x6, x0     # Copy value of x6 into x5
+add x7, x0, x0     # Clear register (x7 = 0)
+beq x3, x0, label  # Compare x3 with 0
+```
 ## 2. x1 = ra (Return address register)
 - When you call a function, CPU must remember where to come back once that function finishes.  
 - It is a special address register that holds that return address.  
@@ -153,13 +156,70 @@ Together,32 flipflops=32 bit = 1 full register**
 - That is why compiler saves `ra` on stack if multiple nested calls are happening.  
   
 
-### Common Uses
-```asm
-add x5, x6, x0     # Copy value of x6 into x5
-add x7, x0, x0     # Clear register (x7 = 0)
-beq x3, x0, label  # Compare x3 with 0
-.
-###
+# RISC-V Registers Notes
+
+## 3. x2 = sp (Stack pointer)
+- It always points to the top of the stack in memory.  
+- The stack is a special memory area used during function calls.  
+
+### CPU uses stack to manage:
+1. Local variables inside a function  
+2. Return addresses  
+3. Saved registers  
+
+---
+
+### How it works
+- **When a function starts:**  
+  - `sp` moves down (lower memory) to make space.  
+  - Local variables and saved registers are stored there.  
+
+- **When function ends:**  
+  - Data is removed.  
+  - `sp` moves back up to its old position.  
+
+- Without stack pointer, CPU won’t know where local variables or `ra` are kept.  
+
+- Helps in nested functions & recursion.  
+- Keeps each function’s workspace separate.  
+
+---
+
+### Important
+- `sp` must always be aligned properly (usually multiple of 16).  
+- Compiler automatically uses `sp` when you work with functions.  
+- If `sp` gets corrupted → program crashes because CPU won’t find correct return address.  
+
+---
+
+### In short
+`x2 (sp)` = CPU’s **bookmark for stack** → it always points to the current top of the stack so that function calls, local variables & saved registers are managed safely.  
+# RISC-V Registers Notes
+
+## 4. x4 = tp (Thread pointer)
+- It is a special register used in multi-threaded programs.  
+- Each thread (like a mini-program running inside your program) needs its own private data area.  
+- `tp` points to that thread’s local storage (TLS).  
+
+---
+
+### In modern programs (especially OS, servers, apps)
+- Many threads run at the same time.  
+- Each thread must keep:  
+  - Its own stack  
+  - Its own local/global variables  
+  - Its own runtime data  
+
+- Without `tp`, CPU wouldn’t know which thread’s data it is using → chaos.  
+- With `tp`, each thread can quickly access its private variables.  
+
+---
+
+### Important
+- Normal single-threaded programs → don’t use `tp`.  
+- In OS kernels, multithreading libraries & browsers `tp` is essential.  
+- Just like `gp` makes global data access fast, `tp` makes thread-local data access fast.  
+
 # 5MEMORY SYSTEM ARCHITECTURE
 
 The term “Memory System Architecture” refers to the design and organization of a computer’s memory system, including how memory is structured, accessed, and managed to store and retrieve data efficiently. It’s a key part of computer architecture because memory speed and organization directly affect a processor’s performance
