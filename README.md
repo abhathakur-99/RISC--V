@@ -195,8 +195,40 @@ beq x3, x0, label  # Compare x3 with 0
 ### In short
 `x2 (sp)` = CPU’s **bookmark for stack** → it always points to the current top of the stack so that function calls, local variables & saved registers are managed safely.  
 # RISC-V Registers Notes
-here
-## 4. x4 = tp (Thread pointer)
+# GP (Global Pointer)
+
+- `gp` is a **special register** that points to the global data area in memory.
+- Significantly, it points to the **middle of the static/global region**, so both directions (up/down) can be used for different kinds of data.
+
+---
+
+## Why `gp` is Useful
+
+- Programs often need access to global variables, constants, arrays.
+- Without `gp`, the CPU needs to **recalculate the address** of each global variable manually every time → slower and more instructions.
+- With `gp`, **globals can be accessed quickly with very small offsets**.
+
+---
+
+## Who Sets `gp`
+
+- When a program starts, the **loader/OS sets `gp`** to point to the global data segment.
+
+---
+
+## Additional Notes
+
+- You (the programmer) **rarely set `gp` yourself** — the **compiler and OS handle it**.
+- It makes code **position-independent**.
+- Using `gp` makes accessing globals **faster**: offsets are **smaller and simpler**.
+
+---
+
+## Summary
+
+- `x3 (gp)` → CPU's **shortcut pointer** to the global/static variable area, so **global data can be accessed quickly with small offsets**.
+
+## 5. x4 = tp (Thread pointer)
 - It is a special register used in multi-threaded programs.  
 - Each thread (like a mini-program running inside your program) needs its own private data area.  
 - `tp` points to that thread’s local storage (TLS).  
