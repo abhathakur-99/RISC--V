@@ -620,4 +620,15 @@ A memory system is usually hierarchical, with different levels of memory differi
 
 ## Key Concepts in Memory System Architecture
 
-- **Memor**
+- **Memory Hierarchy**: A memory from fastest/smallest to slowest/largest.
+  - Goal: Maximize speed & minimize cost.
+
+- **Access Time**: Time it takes to read/write data.
+
+- **Bandwidth**: Amount of data that can be read/written per unit of time.
+
+- **Latency**: Delay between requesting data & receiving it.
+
+- **Volatility**: Whether memory retains data without power.
+  - **RAM** is volatile; **SSD**, **HDD** is non-volatile.
+  - Retains data even when there is no pow
