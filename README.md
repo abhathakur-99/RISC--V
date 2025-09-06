@@ -251,6 +251,49 @@ beq x3, x0, label  # Compare x3 with 0
 - In OS kernels, multithreading libraries & browsers `tp` is essential.  
 - Just like `gp` makes global data access fast, `tp` makes thread-local data access fast.  
 
+
+## 6. x5 t0 (Temporary Register 0)
+
+- `t0` is the first temporary register in RISC-V.
+- Temporaries are **caller-saved registers** — meaning if a function wants to keep their value safe, the caller must save them before calling another function.
+- Basically, scratch space for quick calculations.
+- The CPU needs scratch registers while doing arithmetic, logic, or intermediate steps.
+- Instead of using memory (which is slower), CPUs use temporaries to hold temporary values.
+
+### Example:
+
+Suppose you want to calculate: `(a + b) * (c - d)`
+1. Store `a + b` in `t0`
+2. Store `c - d` in `t1`
+3. Multiply them → final result in `a0` (return register)
+
+- If you call another function in between, you **must save `t0` somewhere** (usually on the stack), otherwise, it gets overwritten.
+
+- `t0` (`x5`) **isn't preserved across function calls**.
+- If you need long-term storage, use **saved registers**.
+- Temporaries = fast & disposable work registers.
+  - `x5 (t0)` = CPU's scratch register for temporary calculations.
+  - Fast to use, but unsafe across function calls.
+
+---
+
+## 7. x6 t1 (Temporary Register 1)
+
+- `t1` is the second temporary register in RISC-V.
+- Belongs to the temporary / caller-saved group (`t0` to `t6`).
+- Works just like `t0` (`x5`) — used for quick, short-term storage during calculations.
+
+### Why it exists:
+- CPU often needs multiple scratch registers at once.
+
+#### Example:
+
+To calculate expression: `(a + b) * (c - d) + e * f`
+
+- `t0`, `t1`, `t2` can each hold intermediate results **without wasting memory accesses**.
+
+> `t1` = a temp. scratch register used for intermediate results in calculations, very fast but **not preserved across function calls**.
+
 # 5MEMORY SYSTEM ARCHITECTURE
 
 The term “Memory System Architecture” refers to the design and organization of a computer’s memory system, including how memory is structured, accessed, and managed to store and retrieve data efficiently. It’s a key part of computer architecture because memory speed and organization directly affect a processor’s performance
